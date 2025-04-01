@@ -1,6 +1,7 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 
@@ -36,6 +37,10 @@ public abstract class Sprite {
 
     public Dimension getSize() {
         return size;
+    }
+
+    public void draw(Graphics graphics, ImageObserver observer) {
+        graphics.drawImage(image, pos.x, pos.y, size.width, size.height, observer);
     }
 
     public abstract void tick();
