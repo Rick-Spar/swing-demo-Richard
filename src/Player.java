@@ -10,21 +10,22 @@ public class Player extends Sprite {
 
     @Override
     public void tick() {
-
+        getPos().x = Math.clamp(getPos().x, 0, BOARD_WIDTH - PLAYER_WIDTH);
+        getPos().y = Math.clamp(getPos().y, 0, BOARD_HEIGHT - PLAYER_HEIGHT);
     }
 
     public void handleActiveKeys(Set<Integer> activeKeyCodes) {
         if (activeKeyCodes.contains(KeyEvent.VK_UP)) {
-            getPos().y -= 10;
+            getPos().y -= PLAYER_SPEED;
         }
         if (activeKeyCodes.contains(KeyEvent.VK_DOWN)) {
-            getPos().y += 10;
+            getPos().y += PLAYER_SPEED;
         }
         if (activeKeyCodes.contains(KeyEvent.VK_LEFT)) {
-            getPos().x -= 10;
+            getPos().x -= PLAYER_SPEED;
         }
         if (activeKeyCodes.contains(KeyEvent.VK_RIGHT)) {
-            getPos().x += 10;
+            getPos().x += PLAYER_SPEED;
         }
     }
 }
